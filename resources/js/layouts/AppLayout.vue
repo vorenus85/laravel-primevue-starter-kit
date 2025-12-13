@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import AppLayout from '@/layouts/app/HeaderLayout.vue'
 
 const props = defineProps({

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { computed } from 'vue'
 import { usePage, Link as InertiaLink } from '@inertiajs/vue3'
 import PageTitleSection from '@/components/PageTitleSection.vue'

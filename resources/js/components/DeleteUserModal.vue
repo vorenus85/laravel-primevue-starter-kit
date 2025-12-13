@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { useTemplateRef } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import Password from 'primevue/password'

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { computed, useTemplateRef } from 'vue'
 import Menu from '@/components/primevue/menu/Menu.vue'
 import { ChevronDown } from 'lucide-vue-next'

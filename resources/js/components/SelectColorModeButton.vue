@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { ref, watchEffect, inject } from 'vue'
 import { Sun, Moon, Monitor } from 'lucide-vue-next'
 

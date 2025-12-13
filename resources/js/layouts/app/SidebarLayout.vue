@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { usePage } from '@inertiajs/vue3'
 import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next'
 import { useAppLayout } from '@/composables/useAppLayout'

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { Link as InertiaLink } from '@inertiajs/vue3'
 import ApplicationLogo from '@/components/ApplicationLogo.vue'
 import Container from '@/components/Container.vue'

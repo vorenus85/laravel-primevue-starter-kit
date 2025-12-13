@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { useThemePreset } from '@/composables/useThemePreset'
 
 const { presets, selectedPreset, setPreset } = useThemePreset()

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { useTemplateRef } from 'vue'
 import { useForm, Head as InertiaHead } from '@inertiajs/vue3'
 import { useToast } from 'primevue/usetoast'

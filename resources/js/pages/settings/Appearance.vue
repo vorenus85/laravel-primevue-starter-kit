@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { Head as InertiaHead } from '@inertiajs/vue3'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue'

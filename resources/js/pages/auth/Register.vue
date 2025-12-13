@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useTemplateRef, onMounted } from 'vue'
 import { useForm, Head as InertiaHead, Link as InertiaLink } from '@inertiajs/vue3'
 import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
@@ -12,8 +12,7 @@ const registerForm = useForm({
     password_confirmation: '',
 })
 
-type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
-const nameInput = useTemplateRef<InputTextType>('name-input')
+const nameInput = useTemplateRef('name-input')
 
 const submit = () => {
     registerForm.post(route('register'), {
@@ -22,7 +21,7 @@ const submit = () => {
 }
 
 onMounted(() => {
-    if (nameInput.value) {
+    if (nameInput.value && nameInput.value.$el) {
         nameInput.value.$el.focus()
     }
 })

@@ -1,21 +1,16 @@
-<script setup lang="ts">
+<script setup>
 import { useTemplateRef } from 'vue'
 import { Link as InertiaLink } from '@inertiajs/vue3'
-import Menu, { type MenuProps } from 'primevue/menu'
-import type { MenuItem } from '@/types'
+import Menu from 'primevue/menu'
 import { ptViewMerge } from '@/utils'
 
-interface ExtendedMenuProps extends Omit<MenuProps, 'model'> {
-    model?: MenuItem[] | undefined;
-}
-const componentProps = defineProps<ExtendedMenuProps>()
+const componentProps = defineProps({})
 
-type MenuType = InstanceType<typeof Menu>;
-const childRef = useTemplateRef<MenuType>('child-ref')
+const childRef = useTemplateRef('child-ref')
 
 defineExpose({
     $el: childRef,
-    toggle: (event: Event) => childRef.value?.toggle(event)
+    toggle: (event) => childRef.value?.toggle(event)
 })
 </script>
 

@@ -1,22 +1,17 @@
-<script setup lang="ts">
+<script setup>
 import { useTemplateRef } from 'vue'
 import { Link as InertiaLink } from '@inertiajs/vue3'
-import ContextMenu, { type ContextMenuProps } from 'primevue/contextmenu'
+import ContextMenu from 'primevue/contextmenu'
 import { ChevronRight } from 'lucide-vue-next'
-import type { MenuItem } from '@/types'
 import { ptViewMerge } from '@/utils'
 
-interface ExtendedContextMenuProps extends Omit<ContextMenuProps, 'model'> {
-    model?: MenuItem[] | undefined;
-}
-const componentProps = defineProps<ExtendedContextMenuProps>()
+const componentProps = defineProps({})
 
-type ContextMenuType = InstanceType<typeof ContextMenu>;
-const childRef = useTemplateRef<ContextMenuType>('child-ref')
+const childRef = useTemplateRef('child-ref')
 
 defineExpose({
     $el: childRef,
-    toggle: (event: Event) => childRef.value?.toggle(event)
+    toggle: (event) => childRef.value?.toggle(event)
 })
 </script>
 

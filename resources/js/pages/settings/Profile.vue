@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue'
 import { useForm, usePage, Head as InertiaHead } from '@inertiajs/vue3'
 import { useToast } from 'primevue/usetoast'
@@ -7,10 +7,10 @@ import SettingsLayout from '@/layouts/UserSettingsLayout.vue'
 import DeleteUserModal from '@/components/DeleteUserModal.vue'
 import InputErrors from '@/components/InputErrors.vue'
 
-defineProps<{
-    mustVerifyEmail: boolean,
-    status?: string,
-}>()
+const props = defineProps({
+    mustVerifyEmail: Boolean,
+    status: String,
+})
 
 const breadcrumbs = [
     { label: 'Dashboard', route: route('dashboard') },
@@ -39,6 +39,7 @@ const showSuccessToast = () => {
         life: 3000,
     })
 }
+
 const updateProfileInformation = () => {
     updateProfileForm.patch(route('profile.update'), {
         preserveScroll: true,
@@ -48,6 +49,7 @@ const updateProfileInformation = () => {
     })
 }
 </script>
+
 
 <template>
     <InertiaHead title="Profile settings" />

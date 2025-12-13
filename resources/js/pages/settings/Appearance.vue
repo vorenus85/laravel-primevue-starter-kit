@@ -1,12 +1,12 @@
-<script setup lang="ts">
+<script setup>
 import { Head as InertiaHead } from '@inertiajs/vue3'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue'
 import SelectColorModeButton from '@/components/SelectColorModeButton.vue'
 
 const breadcrumbs = [
-    { label: 'Dashboard', route: route('dashboard') },
-    { label: 'Appearance settings' },
+  { label: 'Dashboard', route: route('dashboard') },
+  { label: 'Appearance settings' },
 ]
 </script>
 

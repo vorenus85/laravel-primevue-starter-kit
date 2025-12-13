@@ -1,16 +1,15 @@
-<script setup lang="ts">
+<script setup>
 import { useTemplateRef, onMounted } from 'vue'
 import { useForm, Head as InertiaHead, Link as InertiaLink } from '@inertiajs/vue3'
 import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
 import InputErrors from '@/components/InputErrors.vue'
 import InputText from 'primevue/inputtext'
 
-const props = defineProps<{
-    status?: string
-}>()
+const props = defineProps({
+    status: String, // opcionális
+})
 
-type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
-const emailInput = useTemplateRef<InputTextType>('email-input')
+const emailInput = useTemplateRef('email-input')
 
 const forgotPasswordForm = useForm({
     email: '',
@@ -21,11 +20,12 @@ const submit = () => {
 }
 
 onMounted(() => {
-    if (emailInput.value) {
+    if (emailInput.value && emailInput.value.$el) {
         emailInput.value.$el.focus()
     }
 })
 </script>
+
 
 <template>
     <InertiaHead title="Forgot password" />

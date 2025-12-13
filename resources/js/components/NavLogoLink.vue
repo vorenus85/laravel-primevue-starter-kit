@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import ApplicationLogo from '@/components/ApplicationLogo.vue'
 import { Link as InertiaLink } from '@inertiajs/vue3'
 </script>

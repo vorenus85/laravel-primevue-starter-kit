@@ -1,15 +1,15 @@
-<script setup lang="ts">
+<script setup>
 import { ref, watchEffect, inject } from 'vue'
 import { Sun, Moon, Monitor } from 'lucide-vue-next'
-import type { UseColorModeReturn } from '@vueuse/core'
 
-const props = withDefaults(defineProps<{
-    showLabel?: boolean,
-}>(), {
-    showLabel: true,
+const props = defineProps({
+    showLabel: {
+        type: Boolean,
+        default: true,
+    },
 })
 
-const colorMode = inject<UseColorModeReturn>('colorMode')!
+const colorMode = inject('colorMode')
 const selectedColorMode = ref(colorMode?.value || 'auto')
 
 const options = [
@@ -18,7 +18,9 @@ const options = [
     { label: 'System', value: 'auto', icon: Monitor },
 ]
 
-watchEffect(() => colorMode.value = selectedColorMode.value)
+watchEffect(() => {
+    if (colorMode) colorMode.value = selectedColorMode.value
+})
 </script>
 
 <template>

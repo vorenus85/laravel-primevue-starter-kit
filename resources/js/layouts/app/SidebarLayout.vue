@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { usePage } from '@inertiajs/vue3'
 import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next'
 import { useAppLayout } from '@/composables/useAppLayout'
@@ -9,12 +9,12 @@ import FlashMessages from '@/components/FlashMessages.vue'
 import NavLogoLink from '@/components/NavLogoLink.vue'
 import PanelMenu from '@/components/primevue/menu/PanelMenu.vue'
 import Breadcrumb from '@/components/primevue/menu/Breadcrumb.vue'
-import { MenuItem } from '@/types'
 
-const props = withDefaults(defineProps<{
-    breadcrumbs?: MenuItem[],
-}>(), {
-    breadcrumbs: () => [],
+const props = defineProps({
+    breadcrumbs: {
+        type: Array,
+        default: () => [],
+    },
 })
 
 const page = usePage()

@@ -1,29 +1,36 @@
-<script setup lang="ts">
+<script setup>
 import { computed, useTemplateRef } from 'vue'
 import Menu from '@/components/primevue/menu/Menu.vue'
 import { ChevronDown } from 'lucide-vue-next'
-import { MenuItem } from '@/types'
 
-const props = withDefaults(defineProps<{
-    name: string,
-    menuItems: MenuItem[],
-    buttonLabel?: string,
-    buttonSeverity?: 'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' | undefined,
-    buttonVariant?: 'default' | 'outlined' | 'text' | 'link' | undefined,
-    buttonSize?: 'small' | 'large' | undefined,
-    fixedPosition?: 'left' | 'right',
-}>(), {
-    buttonSeverity: 'secondary',
-    buttonVariant: 'default',
+const props = defineProps({
+    name: {
+        type: String,
+        required: true,
+    },
+    menuItems: {
+        type: Array,
+        required: true,
+    },
+    buttonLabel: String,
+    buttonSeverity: {
+        type: String,
+        default: 'secondary',
+    },
+    buttonVariant: {
+        type: String,
+        default: 'default',
+    },
+    buttonSize: String,
+    fixedPosition: String,
 })
 
 const appendToId = computed(() => {
     return props.name.replace(/[^a-zA-Z0-9]/g, '') + '_append'
 })
 
-type MenuType = InstanceType<typeof Menu>;
-const dropdownMenu = useTemplateRef<MenuType>(props.name)
-const toggleDropdownMenu = (event: Event) => {
+const dropdownMenu = useTemplateRef(props.name)
+const toggleDropdownMenu = (event) => {
     if (dropdownMenu.value) {
         dropdownMenu.value.toggle(event)
     }
@@ -31,19 +38,18 @@ const toggleDropdownMenu = (event: Event) => {
 
 const menuPositionClasses = computed(() => {
     let classes = ''
-    if (props?.fixedPosition) {
-        switch (props?.fixedPosition) {
-        case 'left':
-            classes = 'left-auto! top-0! left-0'
-            break
-        case 'right':
-            classes = 'left-auto! top-0! right-0'
-            break
-        default:
-            break
+    if (props.fixedPosition) {
+        switch (props.fixedPosition) {
+            case 'left':
+                classes = 'left-auto! top-0! left-0'
+                break
+            case 'right':
+                classes = 'left-auto! top-0! right-0'
+                break
+            default:
+                break
         }
     }
-
     return classes
 })
 </script>

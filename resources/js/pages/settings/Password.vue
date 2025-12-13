@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useTemplateRef } from 'vue'
 import { useForm, Head as InertiaHead } from '@inertiajs/vue3'
 import { useToast } from 'primevue/usetoast'
@@ -12,9 +12,8 @@ const breadcrumbs = [
     { label: 'Password settings' },
 ]
 
-type PasswordInputType = InstanceType<typeof Password> & { $el: HTMLElement };
-const currentPasswordInput = useTemplateRef<PasswordInputType>('current-password-input')
-const newPasswordInput = useTemplateRef<PasswordInputType>('new-password-input')
+const currentPasswordInput = useTemplateRef('current-password-input')
+const newPasswordInput = useTemplateRef('new-password-input')
 
 const toast = useToast()
 const updatePasswordForm = useForm({
@@ -31,6 +30,7 @@ const showSuccessToast = () => {
         life: 3000,
     })
 }
+
 const updatePassword = () => {
     updatePasswordForm.put(route('password.update'), {
         preserveScroll: true,
@@ -41,14 +41,14 @@ const updatePassword = () => {
         onError: () => {
             if (updatePasswordForm.errors?.password) {
                 updatePasswordForm.reset('password', 'password_confirmation')
-                if (newPasswordInput.value && newPasswordInput.value?.$el) {
+                if (newPasswordInput.value && newPasswordInput.value.$el) {
                     const newPasswordInputElement = newPasswordInput.value.$el.querySelector('input')
                     newPasswordInputElement?.focus()
                 }
             }
             if (updatePasswordForm.errors?.current_password) {
                 updatePasswordForm.reset('current_password')
-                if (currentPasswordInput.value && currentPasswordInput.value?.$el) {
+                if (currentPasswordInput.value && currentPasswordInput.value.$el) {
                     const currentPasswordInputElement = currentPasswordInput.value.$el.querySelector('input')
                     currentPasswordInputElement?.focus()
                 }
@@ -57,6 +57,7 @@ const updatePassword = () => {
     })
 }
 </script>
+
 
 <template>
     <InertiaHead title="Password settings" />

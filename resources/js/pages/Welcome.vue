@@ -1,15 +1,16 @@
-<script setup lang="ts">
+<script setup>
 import { usePage, Head as InertiaHead, Link as InertiaLink } from '@inertiajs/vue3'
 import { LayoutGrid, LogIn, Settings, UserPlus } from 'lucide-vue-next'
 import Container from '@/components/Container.vue'
 
-defineProps<{
-    laravelVersion: string,
-    phpVersion: string,
-}>()
+const props = defineProps({
+    laravelVersion: String,
+    phpVersion: String,
+})
 
 const page = usePage()
 </script>
+
 
 <template>
     <InertiaHead title="Welcome" />

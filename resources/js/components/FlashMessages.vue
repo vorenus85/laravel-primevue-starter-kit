@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref, watch } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import { Check, CircleX, Info, TriangleAlert, Megaphone } from 'lucide-vue-next'

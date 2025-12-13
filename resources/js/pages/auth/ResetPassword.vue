@@ -1,17 +1,16 @@
-<script setup lang="ts">
+<script setup>
 import { useTemplateRef, onMounted } from 'vue'
 import { useForm, Head as InertiaHead } from '@inertiajs/vue3'
 import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
 import InputErrors from '@/components/InputErrors.vue'
 import InputText from 'primevue/inputtext'
 
-const props = defineProps<{
-    email: string,
-    token: string,
-}>()
+const props = defineProps({
+    email: String,
+    token: String,
+})
 
-type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
-const emailInput = useTemplateRef<InputTextType>('email-input')
+const emailInput = useTemplateRef('email-input')
 
 const resetPwForm = useForm({
     token: props.token,
@@ -27,7 +26,7 @@ const submit = () => {
 }
 
 onMounted(() => {
-    if (emailInput.value) {
+    if (emailInput.value && emailInput.value.$el) {
         emailInput.value.$el.focus()
     }
 })

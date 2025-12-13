@@ -1,13 +1,14 @@
-<script setup lang="ts">
+<script setup>
 import AppLayout from '@/layouts/app/HeaderLayout.vue'
-import { MenuItem } from '@/types'
 
-const props = withDefaults(defineProps<{
-    breadcrumbs?: MenuItem[],
-}>(), {
-    breadcrumbs: () => [],
+const props = defineProps({
+    breadcrumbs: {
+        type: Array,
+        default: () => [],
+    },
 })
 </script>
+
 
 <template>
     <AppLayout :breadcrumbs="props.breadcrumbs">

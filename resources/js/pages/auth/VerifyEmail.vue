@@ -1,16 +1,17 @@
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue'
 import { useForm, Head as InertiaHead } from '@inertiajs/vue3'
 import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
 
-const props = defineProps<{
-    status?: string
-}>()
+const props = defineProps({
+    status: String, // opcionális prop JS-ben
+})
 
 const sendVerificationForm = useForm({})
 const submit = () => {
     sendVerificationForm.post(route('verification.send'))
 }
+
 const logoutForm = useForm({})
 const logout = () => {
     logoutForm.post(route('logout'))

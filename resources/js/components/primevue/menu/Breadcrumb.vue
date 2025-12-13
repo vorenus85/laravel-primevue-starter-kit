@@ -1,22 +1,17 @@
-<script setup lang="ts">
+<script setup>
 import { ref, useTemplateRef } from 'vue'
 import { Link as InertiaLink } from '@inertiajs/vue3'
-import Breadcrumb, { type BreadcrumbPassThroughOptions, type BreadcrumbProps } from 'primevue/breadcrumb'
+import Breadcrumb from 'primevue/breadcrumb'
 import { ChevronRight } from 'lucide-vue-next'
-import type { MenuItem } from '@/types'
 import { ptViewMerge } from '@/utils'
 
-interface ExtendedBreadcrumbProps extends Omit<BreadcrumbProps, 'model'> {
-    model?: MenuItem[] | undefined;
-}
-const componentProps = defineProps<ExtendedBreadcrumbProps>()
+const componentProps = defineProps({})
 
-const defaultPt = ref<BreadcrumbPassThroughOptions>({
+const defaultPt = ref({
     root: 'p-0 bg-transparent'
 })
 
-type BreadcrumbType = InstanceType<typeof Breadcrumb>;
-const childRef = useTemplateRef<BreadcrumbType>('child-ref')
+const childRef = useTemplateRef('child-ref')
 defineExpose({ $el: childRef })
 </script>
 

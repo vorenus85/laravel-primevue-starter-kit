@@ -1,14 +1,12 @@
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue'
 import { usePage, Link as InertiaLink } from '@inertiajs/vue3'
 import PageTitleSection from '@/components/PageTitleSection.vue'
 
 const page = usePage()
+
 const currentRoute = computed(() => {
-    // Access page.url to trigger re-computation on navigation.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
     const url = page.url
-    /* eslint-enable @typescript-eslint/no-unused-vars */
     return route().current()
 })
 
@@ -16,20 +14,21 @@ const sidebarNavItems = computed(() => [
     {
         title: 'Profile',
         route: route('profile.edit'),
-        active: currentRoute.value == 'profile.edit',
+        active: currentRoute.value === 'profile.edit',
     },
     {
         title: 'Password',
         route: route('password.edit'),
-        active: currentRoute.value == 'password.edit',
+        active: currentRoute.value === 'password.edit',
     },
     {
         title: 'Appearance',
         route: route('appearance'),
-        active: currentRoute.value == 'appearance',
+        active: currentRoute.value === 'appearance',
     },
 ])
 </script>
+
 
 <template>
     <div>

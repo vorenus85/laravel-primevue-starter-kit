@@ -1,13 +1,12 @@
-<script setup lang="ts">
+<script setup>
 import { useTemplateRef } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import Password from 'primevue/password'
 import InputErrors from '@/components/InputErrors.vue'
 
-const modalOpen = defineModel<boolean>({ default: false })
+const modalOpen = defineModel({ default: false })
 
-type PasswordInputType = InstanceType<typeof Password> & { $el: HTMLElement };
-const passwordInput = useTemplateRef<PasswordInputType>('password-input')
+const passwordInput = useTemplateRef('password-input')
 
 const form = useForm({
     password: '',
@@ -18,7 +17,7 @@ const deleteUser = () => {
         preserveScroll: true,
         onSuccess: () => (modalOpen.value = false),
         onError: () => {
-            if (passwordInput.value && passwordInput.value?.$el) {
+            if (passwordInput.value && passwordInput.value.$el) {
                 const passwordInputElement = passwordInput.value.$el.querySelector('input')
                 passwordInputElement?.focus()
             }
